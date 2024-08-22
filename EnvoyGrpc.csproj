@@ -28,6 +28,7 @@
     <ProtoRoot Include="proto\opencensus\src" />
     <ProtoRoot Include="proto\protoc-gen-validate" />
     <ProtoRoot Include="proto\xds" />
+    <ProtoRoot Include="proto\open-telemetry" />
   </ItemGroup>
   <Target Name="Protobuf_Override" BeforeTargets="_Protobuf_CoreCompile">
     <PropertyGroup>
@@ -57,6 +58,7 @@
     <Protobuf Include="proto\protoc-gen-validate\**\*.proto" ProtoRoot="proto\protoc-gen-validate" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
     <Protobuf Include="proto\udpa\**\*.proto" ProtoRoot="proto\udpa" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
     <Protobuf Include="proto\xds\**\*.proto" ProtoRoot="proto\udpa" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
+    <Protobuf Include="proto\open-telemetry\**\*.proto" ProtoRoot="proto\udpa" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
   </ItemGroup>
 
   <ItemGroup>

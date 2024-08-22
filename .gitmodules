@@ -16,3 +16,6 @@
 [submodule "proto/xds"]
 	path = proto/xds
 	url = https://github.com/cncf/xds.git
+[submodule "proto/open-telemetry"]
+	path = proto/open-telemetry
+	url = https://github.com/open-telemetry/opentelemetry-proto.git
