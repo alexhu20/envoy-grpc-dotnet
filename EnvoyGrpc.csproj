@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>Envoy</RootNamespace>
     <Authors>Warren Falk</Authors>
     <Description>This library contains already-generated .NET gRPC and Protocol Buffer classes from Envoy's xDS protocol buffer files</Description>
-    <PackageProjectUrl>https://github.com/warrenfalk/envoy-grpc-dotnet</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/warrenfalk/envoy-grpc-dotnet</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/alexhu/envoy-grpc-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/alexhu/envoy-grpc-dotnet</RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Copyright>2020 Warren Falk</Copyright>
+    <Copyright>2024 Alex Hu</Copyright>
     <PackageIcon>logo.png</PackageIcon>
     <Product>Envoy.Grpc</Product>
     <PackageId>Envoy.Grpc</PackageId>
@@ -27,6 +27,7 @@
     <ProtoRoot Include="proto\googleapis" />
     <ProtoRoot Include="proto\opencensus\src" />
     <ProtoRoot Include="proto\protoc-gen-validate" />
+    <ProtoRoot Include="proto\xds" />
   </ItemGroup>
   <Target Name="Protobuf_Override" BeforeTargets="_Protobuf_CoreCompile">
     <PropertyGroup>
@@ -55,12 +56,14 @@
     <Protobuf Include="proto\opencensus\src\**\*.proto" ProtoRoot="proto\opencensus\src" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
     <Protobuf Include="proto\protoc-gen-validate\**\*.proto" ProtoRoot="proto\protoc-gen-validate" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
     <Protobuf Include="proto\udpa\**\*.proto" ProtoRoot="proto\udpa" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
+    <Protobuf Include="proto\xds\**\*.proto" ProtoRoot="proto\udpa" OutputDir="$(IntermediateOutputPath)\proto\$([MSBuild]::MakeRelative($(MSBuildThisFileDirectory), %(RelativeDir)))" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Protobuf" Version="3.13.0" />
-    <PackageReference Include="Grpc" Version="2.31.0" />
-    <PackageReference Include="Grpc.Tools" Version="2.31.0">
+    <PackageReference Include="Google.Protobuf" Version="3.27.3" />
+    <PackageReference Include="Grpc.AspNetCore" Version="2.65.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.65.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.65.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
