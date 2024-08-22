@@ -13,3 +13,6 @@
 [submodule "proto/opencensus"]
 	path = proto/opencensus
 	url = https://github.com/census-instrumentation/opencensus-proto.git
+[submodule "proto/xds"]
+	path = proto/xds
+	url = https://github.com/cncf/xds.git
